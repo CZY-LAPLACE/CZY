@@ -1,0 +1,8 @@
+@Component组件，没有明确的角色
+@Service  在业务逻辑层使用
+@Repository  在数据访问层使用
+@Controller  在表示层使用，控制器的声明
+@Aspect   声明一个切面
+@After  在方法执行之后执行
+@Before  在方法执行之前执行
+@Around 在方法之前之后执行
