@@ -1,0 +1,5 @@
+servlet生命周期可以分为四个阶段：
+（1）类装载过程：在运行tomcat容器时来完成，将servlet类加载到tomcat中，
+（2）init()初始化过程：读取配置信息、读取初始化参数，这些基本上在整个生命周期中只需要执行一次；
+（3）service（）服务过程，选择doGet/doPost：当容器收到客户端请求时，servlet引擎将创建一个servletRequest请求对象和一个servletResponse响应对象，然后把这两个对象作为参数传递给对应的servlet对象的service方法；
+（4）destroy（）销毁过程：servlet的卸载是由容器本身定义和实现，在卸载servlet之前需要调用destroy方法，让servlet自行释放占用的系统资源。
