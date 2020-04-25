@@ -16,3 +16,42 @@
    3、包装类是引用传递，基本数据类型是值传递（不过，一般认为Java都是值传递，因为引用传递的引用是内存地址，也是一个值）；
    4、存储位置不同，基本数据类型直接将值保存在栈中，而包装类是把对象保存在堆中，然后通过对象的引用来调用；
    5、包装类是对象，拥有方法和字段，对象的调用都是引用对象的地址，基本类型不是。
+
+Byte类底层代码：
+
+public final class Byte extends Number implements Comparable<Byte> {
+    /**
+     * The value of the {@code Byte}.
+     *
+     * @serial
+     */
+    private final byte value;
+ 
+    /**
+     * A constant holding the minimum value a {@code byte} can
+     * have, -2<sup>7</sup>.
+     */
+    public static final byte   MIN_VALUE = -128;
+ 
+    /**
+     * A constant holding the maximum value a {@code byte} can
+     * have, 2<sup>7</sup>-1.
+     */
+    public static final byte   MAX_VALUE = 127;
+ 
+ 
+    /**
+     * The number of bits used to represent a {@code byte} value in two's
+     * complement binary form.
+     *
+     * @since 1.5
+     */
+    public static final int SIZE = 8;
+ 
+    /**
+     * The number of bytes used to represent a {@code byte} value in two's
+     * complement binary form.
+     *
+     * @since 1.8
+     */
+    public static final int BYTES = SIZE / Byte.SIZE;
