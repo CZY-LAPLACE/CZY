@@ -1,0 +1,36 @@
+==：
+  对于基本数据类型来说：==比较的是它们的值，而对于引用类型来说，==比较的是它们在内存地址。
+  注意：对于字符串相同的两个字符串，若都是用new创建的，那相当于开辟了新的内存地址，所以即使字符串是相同的，但是堆内存地址不一样，==比较结果也是false。
+
+equals：
+    equals()方法是属于超类Object中的一个方法，在对象没有重写这个方法时，默认equals比较的是内存地址，但是在类似String，Integer等类似均已重写了equals()，以String为例，代码如下：
+boolean equals(Object anObject){
+    if(this == anObject){
+        return true;
+    }
+}
+if(anObject instanceof String){
+    String anotherString = (String)anObject;
+    int n = length();
+        if(n == anotherString.length()){
+            int i = 0;
+            while(n-- != 0){
+                if(charAt(i) != anotherString.charAt(i)){
+                    return false;
+                }
+                i++;
+            }
+            return true;
+        }
+}
+return false;
+
+由以上代码可以看出，String的equals()方法仅仅是对比它的数据值，而不是对象的内存地址。
+
+== 和 equals 的区别：
+==：
+基本类型：对比它们的值是否相等；
+引用类型：对比它们的内存地址是否相同；
+equals：
+基本类型：使用==进行比较；
+引用类型：默认情况下，对比它们的内存地址是否相同，如果equals被重写，则根据重写的要求进行比较。
