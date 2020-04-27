@@ -1,1 +1,24 @@
+HashSet类：
+特点：
+1、不能保证元素的排列顺序，顺序可能与添加顺序不同，顺序也有可能发生改变。
+2、HashSet不是同步的，如果多个线程同时访问一个HashSet，假设有两个或者两个以上的线程修改了HashSet集合时，则必须通过代码来保证其同步。
+3、集合元素值可以为null，key值只能一个为null，而value可以多个为null。
 
+LinkedHashSet类：
+LinkedHashSet是HashSet的子类，LinkedHashSet集合也是根据元素的hashCode值来决定元素的储存位置，但它同时使用链表来决定元素的次序，这样使得元素看起来是以插入的顺序来保存的，所以当遍历LinkedHash集合里面的元素时，将会以元素的添加顺序来访问集合里的元素。
+LinkedHashSet需要维护元素的插入顺序，因此性能将低于HashSet的性能，但在迭代访问Set的全部元素时将有很好的性能，因为它以链表来维护内部的顺序。
+
+TreeSet类：
+TreeSet是SortedSet接口的实现类，所以其中的元素处于排序状态。
+TreeSet支持两种排序方式：自然排序和定制排序。在默认情况下，TreeSet采用自然排序（比较元素之间的大小关系，然后升序排序）。
+注意：如果希望TreeSet能正常运行，TreeSet只能添加同一种类型的对象，因为不同类型的对象无法比较大小。
+
+EnumSet类：
+EnumSet是一个专为枚举类型设计的集合类，EnumSet中的所有元素都必须指定枚举类型的枚举值。EnumSet的集合元素是有序的，EnumSet以枚举值在Enum类内的定义顺序来决定集合元素的顺序。
+EnumSet在内部以位向量的形式存储，这种存储方式非常紧凑、高效，因此EnumSet对象占用内存很小，而且运行效率很好。
+
+各Set实现类的性能分析：
+HashSet的性能总是比TreeSet（特别是最常用的添加和查询元素等操作），因为TreeSet需要额外的红黑树算法来维护集合元素的次序，只有当需要一个保持排序的Set时，才可以使用TreeSet，否则都应该使用HashSet。
+LinkedHashSet类对于普通的插入、删除操作，LinkedHashSet比HashSet要略微慢一点，这是维护链表的额外开销造成的，但是因为有了链表，遍历LinkedHashSet会更快。
+EnumSet是所有Set实现类中性能最好的，但它只能保存同一个枚举类的枚举值作为集合元素。
+注意：Set的三个实现类HashSet、TreeSet和EnumSet都是线程不安全的，必须手动保证该Set集合的同步性。
