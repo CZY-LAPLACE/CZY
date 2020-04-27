@@ -1,11 +1,26 @@
+Exception(异常)和Error(错误)都是Throwable的两个重要子类。
 
-
-1、try...catch...finally分为单catch与多catch处理方式，其本质执行方法相同。多catch处理时，catch中异常类型的关系应是先为子类异常，再是父类异常，若是相反，前面的catch将异常捕获了，那后面的catch将无法捕获异常，也会造成捕获异常类型不明的情况。
+1、try...catch...finally分为单catch与多catch处理方式，其本质执行方法相同。多catch处理时，catch中异常类型的关系应是先为子类异常，再是父类异常，若是相反，前面的catch将异常捕获了，那后面的catch将无法捕获异常，将会造成捕获异常类型不明的情况。
 2、throw,throws抛出多异常，但其本身并不处理异常，而是交给调用者处理。
 
 throw和throws的区别：
 throws是用来声明一个方法可能抛出的所有异常信息，throws是将异常声明但不处理，而是将异常往上传递，谁调用我就交给谁处理。
 throw则是抛出一个具体的异常类型。
 
-常见的异常类型：
-运行时异常：
+异常的分类：
+（1）非受检异常
+非受检异常是指编译器不要求强制处置的异常。一般是指因设计或实现方式不当而导致的问题。也可以说，是程序员的原因导致的，是本类可以避免的情况。
+Java.lang.RuntimeException及其子类都是非受检异常。具体如下：
+Java.lang.ClassCastException：错误的类型转换异常；
+java.lang.ArrayIndexOutOfBoundsException：组下标越界异常；
+java.lang.NullPointException：空指针访问异常；
+java.lang.ArithmeticException：除零溢出异常。
+（2）受检异常
+受检异常是指编译器要求必须处置的异常，即程序在运行时由于外界因素造成的一般性异常，具体如下：
+java.lang.ClassNotFoundException：没有找到具有指定名称的类异常；
+java.lang.FileNotFoundException：访问不存在的文件异常；
+java.lang.IOException：操作文件时发生的异常；
+Java.sql.SQLException：操作数据库时发生的异常。
+
+Error：
+Error是程序无法处理的错误，表示运行应用程序中较为严重的问题。大多数错误与程序员执行的操作无关，而是表示代码运行时JVM出现的问题。
