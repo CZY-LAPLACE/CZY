@@ -1,0 +1,15 @@
+volatile到底做了什么？
+1、禁止了指令重排；
+2、保证了不同线程对这个变量进行操作时的可见性，即一个线程修改了某个值，这个新值对其它线程都是可见的；
+3、不保证原子性（线程不安全）
+
+volatile保证了有序性，可见性，不保证原子性；
+synchronized保证了有序性，可见性，原子性。
+
+synchronized关键字和volatile关键字比较：
+1、volatile关键字是线程同步的轻量级实现，所以volatile性能肯定比synchronized关键字要好，但是volatile关键字只能用于变量，而
+   synchronized关键字可以修饰方法以及代码块。synchronized关键字在JavaSe1.6之后进行了主要包括减少获得锁和释放锁带来的性能消耗，
+   而引入的偏向锁和轻量锁以及其它各种优化之后，执行效率有了显著提升，实际开发中使用synchronized的场景更多一些。
+2、多线程访问volatile关键字不会发生阻塞，而synchronized关键字可能会发生阻塞；
+3、volatile关键字保证了数据的有序性，可见性，不能保证原子性，而synchronized保证了数据的有序性，可见性，以及原子性。
+4、volatile关键字主要用于解决变量在多个线程之间的可见性，而synchronized关键字解决的是多个线程访问资源的同步性。
